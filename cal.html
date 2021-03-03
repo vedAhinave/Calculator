@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding-left: 75px;
+            padding-right: 30px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .column {
+            float: left;
+            width: 17%;
+            padding: 12px;
+            text-align: center;
+            font-size: 35px;
+            cursor: pointer;
+            color: rgb(0, 0, 0);
+            border: 1px solid black;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .Cal_Display {
+            float: right;
+            color: white;
+            font-size: 35px;
+        }
+
+        .col {
+            float: left;
+            width: 85%;
+            padding: 20px;
+            background-color: rgb(230, 251, 255);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="row">
+        <input type="text" class="col" id="sametext" ; style=" color: rgb(0, 0, 0); font-size: 50px; text-align: right;border-color: #673ab878;;
+              background-color: aliceblue;">
+        <input type="text" class="col" id="inps" ; style=" color: rgb(0, 0, 0); font-size: 50px; text-align: right;border:2px groove;     border-color: #3f51b5a3;
+        ">
+    </div>
+    <div class="row">
+        <div class="column" id="Pyvalue" onclick="piValue('3.14');"
+            style="background: rgb(255, 193, 99);color: rgb(255, 0, 0);">
+            &pi;
+        </div>
+        <div class="column" id="mul" onclick="myFunc('*');" style="background:rgb(255, 193, 99);
+         color: rgb(255, 0, 0);">
+            *
+        </div>
+        <div class="column" id="divides" onclick="myFunc('/');" style="background:rgb(255, 193, 99); 
+        color: rgb(255, 0, 0);">
+            /
+        </div>
+        <div class="column" id="sub" onclick="myFunc('-');" style="background:rgb(255, 193, 99);
+        color: rgb(255, 0, 0);">
+            -
+        </div>
+        <div class="column" id="add" onclick="myFunc('+');" style="background:rgb(255, 193, 99);
+        color: rgb(255, 0, 0);">
+            +
+        </div>
+
+        <!-- col0 -->
+        <div class="column" id="powerValue" onclick="Power();"
+            style="background:rgb(255, 193, 99);color: rgb(255, 0, 0);">
+            ^
+        </div>
+
+
+        <div class="column" id="decimal" onclick="myFunc('.');" style="background:rgb(212, 212, 212);">
+            .
+        </div>
+        <div class="column" onclick="myFunc('9');" style="background:rgb(212, 212, 212);">
+            9
+        </div>
+        <div class="column" onclick="myFunc('8');" style="background:rgb(212, 212, 212);">
+            8
+        </div>
+        <div class="column" onclick="myFunc('7');" style="background:rgb(212, 212, 212);">
+            7
+        </div>
+        <!-- col 1 -->
+        <div class="column" id="Sqrrootvalue" onclick="sqrroot();"
+            style="background:rgb(255, 193, 99); color: rgb(255, 0, 0);">
+            &radic;
+        </div>
+        <div class="column" onclick="myFunc('6');" style="background:rgb(212, 212, 212);">
+            6
+        </div>
+
+        <div class="column" onclick="myFunc('5');" style="background:rgb(212, 212, 212);">
+            5
+        </div>
+        <div class="column" onclick="myFunc('4');" style="background:rgb(212, 212, 212);">
+            4
+        </div>
+        <div class="column" onclick="myFunc('3');" style="background:rgb(212, 212, 212);">
+            3
+        </div>
+
+        <!-- col2 -->
+        <div class="column" id="logvalue" onclick="logValue();"
+            style="background:rgb(255, 193, 99);color: rgb(255, 0, 0);">
+            log
+        </div>
+        <div class="column" onclick="myFunc('2');" style="background:rgb(212, 212, 212);">
+            2
+        </div>
+        <div class="column" onclick="myFunc('1');" style="background:rgb(212, 212, 212);">
+            1
+        </div>
+        <div class="column" onclick="myFunc('0');" style="background:rgb(212, 212, 212);">
+            0
+        </div>
+        <div class="column" id="result" onclick="solve();" style="background:rgb(80, 255, 95);">
+            =
+        </div>
+        <!-- col3 -->
+        <div class="column" id="clrscr" onclick="clearInp();" style="background: rgb(25, 213, 255);">
+            C
+        </div>
+        <div class="column" id="backspace_btn" onclick="BackspaceBtn();"
+            style="background: rgb(25, 213, 255); height: 66px;">
+            &#8882;
+        </div>
+
+    </div>
+
+    <script>
+        // var displaymynum = '', result = false, q1 = '';
+        var isResult = false;
+
+        function myFunc(d) {
+            if (isResult) {
+                document.getElementById("inps").value = d;
+                isResult = false;
+            } else {
+                var displaymynum = document.getElementById("inps").value += d;
+                document.getElementById("inps").value = displaymynum;
+            }
+
+
+            //     var u1 = '';
+            //     var clearingdis = d;
+            //     var q1 = document.getElementById("inps").value;
+
+            //     if (displaymynum != '') {
+            //         if (q1.match(/.*['*^+-\/'].*$/g)) {
+            //             u1 = q1 + clearingdis;
+
+
+            //         } else {
+            //             if (result) {
+            //                 u1 = clearingdis;
+            //                 result = false;
+            //             } else {
+            //                 u1 = q1 + clearingdis;
+            //             }
+            //         }
+            //     } else {
+            //         u1 = q1 + clearingdis;
+            //     }
+            //     var displaymynum=document.getElementById("inps").value += d;
+            //     console.log(document.getElementById("inps").value);
+
+            // if (d.match(/[0-9]+/g)) {
+            //     document.getElementById("inps").value.replace(document.getElementById("inps").value)
+            // }
+        }
+
+        function solve(d) {
+            var x = document.getElementById("inps").value;
+            console.log(x);
+
+            var p = document.getElementById("inps").value;
+            var displaymynumsame = document.getElementById("sametext").value = p;
+            console.log(p);
+
+
+            if (p.split("^")[1]) {
+                var m = p.split("^")[0];
+                console.log(m);
+                var n = p.split("^")[1];
+                // var n = document.getElementById("inps").value;
+                var final = Math.pow(m, n);
+                document.getElementById("inps").value = final;
+                console.log(final);
+            }
+
+            else if (p.match('√')) {
+                var x2 = document.getElementById("inps").value;
+                var k = p.match("√");
+                var patt1 = /[0-9]+/g;
+                var letters = x2.match(patt1);
+                // var w = document.getElementById("inps").value;
+                var resofsqrroot = eval(Math.sqrt(parseInt(letters)));
+                console.log(eval(Math.sqrt(parseInt(letters))));
+                document.getElementById("inps").value = resofsqrroot;
+            }
+
+            else if (p.match("log")) {
+                var x1 = document.getElementById("inps").value;
+                var k1 = p.match("log");
+                var patt2 = /[0-9]+/g;
+                var lettersoflog = x1.match(patt2);
+                var resoflogof = Math.log10(lettersoflog);
+                document.getElementById("inps").value = resoflogof;
+            }
+
+            else {
+                var y = eval(x);
+                console.log(y);
+                document.getElementById("inps").value = y;
+            }
+            isResult = true;
+        }
+
+        function piValue(d) {
+            let x = d;
+            let r = document.getElementById("inps").value;
+            let s = r + x;
+            document.getElementById("inps").value = s;
+            // console.log(Math.PI);
+        }
+
+        function Power() {
+            let mystr = document.getElementById("inps").value;
+            document.getElementById("inps").value = mystr + "^";
+            result = true;
+        }
+
+        function sqrroot(d) {
+            var x1 = document.getElementById("inps").value;
+            document.getElementById("inps").value = "√" + x1;
+            result = true;
+        }
+
+        function logValue() {
+            var logof = document.getElementById("inps").value;
+            document.getElementById("inps").value = "log(" + logof + ")";
+            result = true;
+        }
+
+        function BackspaceBtn(d) {
+            var displaymynum = document.getElementById("inps").value;
+            document.getElementById("inps").value = displaymynum.substring(0, displaymynum.length - 1);
+        }
+
+        function clearInp() {
+            document.getElementById("inps").value = "";
+            document.getElementById("clrscr").value = "";
+            document.getElementById("sametext").value = "";
+
+        }
+    </script>
+</body>
+
+</html>
